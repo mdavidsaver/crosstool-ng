@@ -115,6 +115,16 @@ config NCURSES
 config NCURSES_TARGET
     bool
 
+config RTEMS_KERNEL
+    bool
+    depends on RTEMS
+    default y
+    prompt "Build RTEMS core libraries"
+    help
+      The RTEMS kernel is build as a set of libraries which are linked to
+      get a target ELF image.
+      This build also included the RTEMS Makefiles.
+
 if LIBICONV
 source "config/companion_libs/libiconv.in"
 endif
@@ -150,6 +160,9 @@ if NCURSES || NCURSES_TARGET
 comment "ncurses version needed to build for target"
     depends on !NCURSES
 source "config/companion_libs/ncurses.in"
+endif
+if RTEMS_KERNEL
+source "config/companion_libs/rtems.in"
 endif
 
 if COMPLIBS

@@ -1,0 +1,37 @@
+
+choice
+    bool
+    prompt "RTEMS version"
+    help
+      Select RTEMS kernel version, or "none" to skip building
+      the kernel libraries.
+# Don't remove next line
+# CT_INSERT_VERSION_BELOW
+
+config RTEMS_V_NONE
+    bool
+    prompt "none"
+
+config RTEMS_V_4_10_2
+    bool
+    prompt "4.10.2"
+
+endchoice
+
+config RTEMS_KERNEL_VERSION
+    string
+    depends on RTEMS
+# Don't remove next line
+# CT_INSERT_VERSION_STRING_BELOW
+    default "" if RTEMS_V_NONE
+    default "4.10.2" if RTEMS_V_4_10_2
+
+config RTEMS_BSPS
+    string
+    prompt "Board Support Packages"
+    depends on ! RTEMS_V_NONE
+    default "pc386" if ARCH_x86 && ARCH_32
+    default "mvme3100" if ARCH_powerpc
+    help
+      A space seperated list of Board Support Packages (BSPs).
+      For example "pc386" for x86_32 or "mvme3100 mvme5500" for powerpc.
