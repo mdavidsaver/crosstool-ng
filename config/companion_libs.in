@@ -141,6 +141,23 @@ config LIBBSPEXT_VERSION
     default "9db1deff53d0bf868c76d93e905e9a38fc7551db"
 endif
 
+config CEXP
+    bool
+    depends on RTEMS
+    default y
+    prompt "C expression shell"
+    help
+      An interactive interpreter with a C-like syntax.
+      Includes libtecla.
+
+if CEXP
+config CEXP_VERSION
+    string
+    prompt "CEXP Revision"
+    # refs/tags/debian/2.0b-8
+    default "567976dadb3c4c09f72454fac3f825935b551975"
+endif
+
 if LIBICONV
 source "config/companion_libs/libiconv.in"
 endif
