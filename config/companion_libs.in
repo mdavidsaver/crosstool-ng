@@ -125,6 +125,22 @@ config RTEMS_KERNEL
       get a target ELF image.
       This build also included the RTEMS Makefiles.
 
+config LIBBSPEXT
+    bool
+    depends on RTEMS_KERNEL && ARCH_powerpc
+    default y
+    prompt "BSP extensions library"
+    help
+      Helpers for address probing
+
+if LIBBSPEXT
+config LIBBSPEXT_VERSION
+    string
+    prompt "BSP extensions Revision"
+    # refs/tags/debian/1.5-12
+    default "9db1deff53d0bf868c76d93e905e9a38fc7551db"
+endif
+
 if LIBICONV
 source "config/companion_libs/libiconv.in"
 endif
