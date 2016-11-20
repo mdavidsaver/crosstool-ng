@@ -3,6 +3,7 @@
 config LIBC_NEWLIB_IO_C99FMT
     bool
     prompt "Enable IOs on C99 formats"
+    default y if RTEMS
     help
       Enable support for IOs on C99 formats.
 

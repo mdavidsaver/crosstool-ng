@@ -101,6 +101,7 @@ config TARGET_VENDOR
     string
     prompt "Tuple's vendor string"
     depends on !LIBC_avr_libc
+    depends on !RTEMS
     default "unknown"
     help
       Vendor part of the target tuple.

@@ -1,8 +1,9 @@
 # newlib options
 
-## depends on BARE_METAL
+## depends on (BARE_METAL || RTEMS)
 ##
-## select LIBC_SUPPORT_THREADS_NONE
+## select LIBC_SUPPORT_THREADS_NONE   if BARE_METAL
+## select LIBC_SUPPORT_THREADS_NATIVE if RTEMS
 ## select CC_CORE_PASSES_NEEDED if CANADIAN
 ## select CC_CORE_PASS_2_NEEDED if ! CANADIAN
 ##

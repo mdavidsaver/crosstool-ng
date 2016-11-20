@@ -1,0 +1,24 @@
+# RTEMS config options
+
+## select RTEMS
+##
+## help Build a toolchain for use with RTEMS (Real Time Executive for Multitasking Systems)
+## help a FOSS real-time OS.  RTEMS does not use virtual memory protections, thus all threads
+## help are part of a single process.
+## help
+## help The RTEMS kernel may be build as a companion library.
+## help
+## help Note: RTEMS kernel versions have a strong dependence on newlib version.
+## help       RTEMS 4.10.2 -> newlib 1.18.0
+## help
+## help http://www.rtems.org/
+
+config RTEMS_TOOLCHAIN_NAME
+  string
+  prompt "RTEMS kernel name in toolchain"
+  default "rtems"
+  help
+    Select the kernel part of the toolchain name.
+    By conventions RTEMS includes part, or all, of the kernel version
+    For example, "rtems4.10" might give a toolchain "powerpc-rtems4.10".
+    Useful to allow multiple toolchain versions to be installed side by side.
