@@ -583,6 +583,10 @@ do_gcc_core_backend() {
         fi
     fi
 
+    if [ "${CT_RTEMS}" = "y" ]; then
+        extra_config+=("--enable-version-specific-runtime-libs")
+    fi
+
     CT_DoLog DEBUG "Extra config passed: '${extra_config[*]}'"
 
     # Clang's default bracket-depth is 256, and building GCC
